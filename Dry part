@@ -1,0 +1,14 @@
+The mission:
+Read the paper Practical Traffic Analysis Attacks on Secure Messaging Applications.
+Link to the paper:
+https://www.ndss-symposium.org/ndss-paper/practical-traffic-analysis-attacks-on-secure-messaging-applications/
+
+You can skip the very details of the algorithm and the mathematical analysis.
+Answer the following questions in Hebrew:
+Explain in your own words the paper’s main idea. In particular, refer to the following points:
+1. How does the attacker obtain ground truth about the traffic of the channel?
+2. How does the attacker wiretap the network traffic?
+3. Describe shortly the conclusions from Table II in the paper.
+4. Fig. 8 in the paper.
+Add to the dry part links to your Github project and LinkedIn accounts.
+
