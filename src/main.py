@@ -8,8 +8,11 @@ def main():
     # sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # sock.connect((IP, PORT))
 
-    filterBy = "tcp"
-    sniff(filter=filterBy)
+    filterWhatsApp = "tcp and port 443"  # According to official facebook: 5222, 443
+    filterTelegram = "tcp and port"  # TCP on port 80, 443, or 5222
+    filterFacebookMessenger = "tcp and port"  # TCP on port 3478 or 443 or 5222
+
+    sniff(filter=filterWhatsApp)
 
 
 if __name__ == '__main__':
