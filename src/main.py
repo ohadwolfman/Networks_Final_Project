@@ -9,6 +9,7 @@ def load_telegram():
     tg = pd.read_csv("../resources/telegramCSV.csv", sep=',', header=0, usecols=["No.", "Time", "Source", "Destination", "Protocol", "Length", "Info"])
     print(tg.head())
 
+
 def main():
     # ------------ WhatsApp analysis ------------------
     wa = load_whatsapp()
