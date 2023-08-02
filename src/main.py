@@ -1,18 +1,20 @@
-import socket
-from scapy.all import *
+import pandas as pd
+import numpy as np
 
-IP = '127.0.0.1'
-PORT = 80
+def load_whatsapp():
+    wa = pd.read_csv("../resources/whatsappCSV.csv", sep=',', header=0, usecols=["No.", "Time", "Source", "Destination", "Protocol", "Length", "Info"])
+    print(wa.head())
+
+def load_telegram():
+    tg = pd.read_csv("../resources/telegramCSV.csv", sep=',', header=0, usecols=["No.", "Time", "Source", "Destination", "Protocol", "Length", "Info"])
+    print(tg.head())
 
 def main():
-    # sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    # sock.connect((IP, PORT))
+    # ------------ WhatsApp analysis ------------------
+    wa = load_whatsapp()
 
-    filterWhatsApp = "tcp and port 443"  # According to official facebook: 5222, 443
-    filterTelegram = "tcp and port"  # TCP on port 80, 443, or 5222
-    filterFacebookMessenger = "tcp and port"  # TCP on port 3478 or 443 or 5222
-
-    sniff(filter=filterWhatsApp)
+    # ------------ Telegram analysis ------------------
+    tg = load_telegram()
 
 
 if __name__ == '__main__':
