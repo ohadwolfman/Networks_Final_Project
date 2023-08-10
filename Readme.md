@@ -15,7 +15,7 @@
 - resources directory: includes some sample raw data for the work (traces / pcap files etc.).
 - res directory: includes the results (text files / Python pickle files).
 
-### The dataset details and another facts
+### Dataset details and additional information
 - We exported every Wireshark record to a csv files for the analyzing.
 - Every csv file contains the following columns:
     - No. - the packet number 
@@ -36,7 +36,7 @@
 - The IM platform WhatsApp uses TLSv1.2 protocol which is a cryptographic protocol used to secure communications over a computer network
     - It ensures that data transmitted between the client and server is encrypted
     - It allows the client and server to verify each other's identities using digital certificates, preventing man-in-the-middle attacks
-    - 
+- Each SIM event, e.g., a sent image, produces a burst of MTU-sized packets in the encrypted traffic with very small inter-packet delays.
 
 
 ### References

@@ -1,3 +1,5 @@
+import os
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -61,13 +63,6 @@ def reformat_columns(df: pd.DataFrame):
 
 
 def plot_activity_trends(df):
-    # # Convert the "Time" column to datetime format (if not already in datetime format)
-    # df["Time"] = pd.to_datetime(df["Time"])
-
-    # Group the data by time intervals (e.g., hours, days, etc.) and count the messages in each interval
-    # For example, here we're using "D" to group by day, you can change it to "H" for hourly analysis.
-    # message_count = df.resample("D", on="Time")["No."].count()
-
     # Plot the message count over time using a line chart
     plt.figure(figsize=(10, 6))
     plt.plot(df["Time_delay"], df["Length_diff"], marker='o', linestyle='-')
@@ -77,6 +72,19 @@ def plot_activity_trends(df):
     plt.grid(True)
     plt.xticks(rotation=45)
     plt.tight_layout()
+
+    # Get the absolute path of the "res" directory
+    res_directory = os.path.join(os.getcwd(), "res")
+
+    # Create the "res" directory if it doesn't exist
+    if not os.path.exists(res_directory):
+        os.makedirs(res_directory)
+
+    # Save the plot to the "res" directory with a new image file name
+    image_path = os.path.join(res_directory, "new_plot.png")
+    plt.savefig(image_path)
+
+    # Show the plot
     plt.show()
 
 
