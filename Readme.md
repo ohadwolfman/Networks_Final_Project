@@ -56,11 +56,14 @@ We initiated our study by capturing the traffic from five distinct WhatsApp grou
 Following the recordings of each of the groups, we subjected them to a filtering process, as detailed above.
 
 In alignment with the paper, we constructed visual representations elucidating both the inter-message delays and the dimensions of individual messages. Furthermore, we generated probability density functions (PDFs) for each distinct group classification. These graphical analyses provide substantive insights into the underlying traffic patterns and behaviors.
+
 By analyzing these graphical representations, we can derive several key observations. Firstly, the inter-message delays offer an understanding of the temporal distribution and pacing of messages within the network, potentially revealing periods of high or low activity. Such insights can be crucial for identifying regular transmission intervals or bursts of communication which may correspond to specific operational patterns or anomalies.
 
 Secondly, by assessing the dimensions of individual messages, we gain insight into the volume and type of data being transmitted. Larger message sizes might indicate transmission of multimedia files or bulk data transfers, whereas smaller messages could be associated with control signals or textual communications.
 
 Moreover, the probability density functions (PDFs) for each distinct group classification offer a comprehensive overview of the statistical distribution of the data. These functions can help identify outliers or predominant modes in the data, further contributing to our understanding of the traffic dynamics.
+
+During the data acquisition process, we meticulously logged the timestamps of transmitted items, subsequently incorporating this data into the analyses of inter-message delays and message sizes. An examination of the results reveals that while our filtering mechanism is not infallible, leading to the presence of some noise in the recordings, the overall outcome is commendable, as evidenced by the high correlation observed.
 
 Presented below are the aforementioned figures. The graph depicting inter-message delays and message sizes is distinguished by two colors. One color represents the items sent by the user whose communication we monitored (with an internal IP of 10.0.2.15), while all other incoming traffic is denoted by a different color.
 
@@ -69,41 +72,49 @@ Presented below are the aforementioned figures. The graph depicting inter-messag
   <img src="res/PDF/whatsappImagesCSVpdfWithFittedExponential.png" width="400" alt="Images group PDF" />
 </p>
 <br clear="both" />
-
 > Images group graphs
+
 
 <p float="left">
   <img src="res/LengthVsTime/edited/whatsappAudioCSVlengthVsTime.png" width="400" alt="Audio group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappAudioCSVpdfWithFittedExponential.png" width="400" alt="Audio group PDF" />
 </p>
 <br clear="both" />
-
 > Audio group graphs
+
 
 <p float="left">
   <img src="res/LengthVsTime/edited/whatsappVideosCSVlengthVsTime.png" width="400" alt="Videos group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappVideosCSVpdfWithFittedExponential.png" width="400" alt="Videos group PDF" />
 </p>
 <br clear="both" />
-
 > Videos group graphs
+
 
 <p float="left">
   <img src="res/LengthVsTime/edited/whatsappFilesCSVlengthVsTime.png" width="400" alt="Files group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappFilesCSVpdfWithFittedExponential.png" width="400" alt="Files group PDF" />
 </p>
 <br clear="both" />
-
 > Files group graphs
+
 
 <p float="left">
   <img src="res/LengthVsTime/edited/whatsappMessagesCSVlengthVsTime.png" width="400" alt="Messages group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappMessagesCSVpdfWithFittedExponential.png" width="400" alt="Messages group PDF" />
 </p>
 <br clear="both" />
-
 > Mixed (Mostly messages) group graphs
 
+Beyond the groups previously discussed, we also captured data from a group where constant background noise was present, attributed to the continuous operation of Spotify. This dataset too underwent the same rigorous filtering process as its counterparts. After extracting the graph representing this 'background-noise group' and subjecting it to our filtering technique, an immediate observation points to the significant noise within. Yet, once filtered, the resultant graph not only showcased a marked diminution in disruptions, thereby enhancing data clarity, but also facilitated a clear demarcation and recognition of the actual underlying traffic trends and events.
+
+<p float="left">
+  <img src="res/LengthVsTime/clean/WhatsappNoisedGroupDirtylengthVsTime.png" width="300" alt="Messages group inter-message delays and the message sizes" />
+  <img src="res/LengthVsTime/edited/whatsappMessagesCSVlengthVsTime.png" width="300" alt="Messages group inter-message delays and the message sizes" />
+  <img src="res/PDF/whatsappMessagesCSVpdfWithFittedExponential.png" width="300" alt="Messages group PDF" />
+</p>
+<br clear="both" />
+> Noisy before filtering (left), the rest is the same
 
 #### When the attacked user is may active in several IM groups simultaneously:
 
