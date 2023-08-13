@@ -65,40 +65,40 @@ Moreover, the probability density functions (PDFs) for each distinct group class
 Presented below are the aforementioned figures. The graph depicting inter-message delays and message sizes is distinguished by two colors. One color represents the items sent by the user whose communication we monitored (with an internal IP of 10.0.2.15), while all other incoming traffic is denoted by a different color.
 
 <p float="left">
-  <img src="res/whatsappImagesCSVlengthVsTime.png" width="400" alt="Image group inter-message delays and the message sizes" />
-  <img src="res/whatsappImagesCSVpdfWithFittedExponential.png" width="400" alt="Images group PDF" />
+  <img src="res/LengthVsTime/edited/whatsappImagesCSVlengthVsTime.png" width="400" alt="Image group inter-message delays and the message sizes" />
+  <img src="res/PDF/whatsappImagesCSVpdfWithFittedExponential.png" width="400" alt="Images group PDF" />
 </p>
 <br clear="both" />
 
 > Images group graphs
 
 <p float="left">
-  <img src="res/whatsappAudioCSVlengthVsTime.png" width="400" alt="Audio group inter-message delays and the message sizes" />
-  <img src="res/whatsappAudioCSVpdfWithFittedExponential.png" width="400" alt="Audio group PDF" />
+  <img src="res/LengthVsTime/edited/whatsappAudioCSVlengthVsTime.png" width="400" alt="Audio group inter-message delays and the message sizes" />
+  <img src="res/PDF/whatsappAudioCSVpdfWithFittedExponential.png" width="400" alt="Audio group PDF" />
 </p>
 <br clear="both" />
 
 > Audio group graphs
 
 <p float="left">
-  <img src="res/whatsappVideosCSVlengthVsTime.png" width="400" alt="Videos group inter-message delays and the message sizes" />
-  <img src="res/whatsappVideosCSVpdfWithFittedExponential.png" width="400" alt="Videos group PDF" />
+  <img src="res/LengthVsTime/edited/whatsappVideosCSVlengthVsTime.png" width="400" alt="Videos group inter-message delays and the message sizes" />
+  <img src="res/PDF/whatsappVideosCSVpdfWithFittedExponential.png" width="400" alt="Videos group PDF" />
 </p>
 <br clear="both" />
 
 > Videos group graphs
 
 <p float="left">
-  <img src="res/whatsappFilesCSVlengthVsTime.png" width="400" alt="Files group inter-message delays and the message sizes" />
-  <img src="res/whatsappFilesCSVpdfWithFittedExponential.png" width="400" alt="Files group PDF" />
+  <img src="res/LengthVsTime/edited/whatsappFilesCSVlengthVsTime.png" width="400" alt="Files group inter-message delays and the message sizes" />
+  <img src="res/PDF/whatsappFilesCSVpdfWithFittedExponential.png" width="400" alt="Files group PDF" />
 </p>
 <br clear="both" />
 
 > Files group graphs
 
 <p float="left">
-  <img src="res/whatsappMessagesCSVlengthVsTime.png" width="400" alt="Messages group inter-message delays and the message sizes" />
-  <img src="res/whatsappMessagesCSVpdfWithFittedExponential.png" width="400" alt="Messages group PDF" />
+  <img src="res/LengthVsTime/edited/whatsappMessagesCSVlengthVsTime.png" width="400" alt="Messages group inter-message delays and the message sizes" />
+  <img src="res/PDF/whatsappMessagesCSVpdfWithFittedExponential.png" width="400" alt="Messages group PDF" />
 </p>
 <br clear="both" />
 
