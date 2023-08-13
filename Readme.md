@@ -38,6 +38,16 @@
     - It allows the client and server to verify each other's identities using digital certificates, preventing man-in-the-middle attacks
 - Each SIM event, e.g., a sent image, produces a burst of MTU-sized packets in the encrypted traffic with very small inter-packet delays.
 
+### The cleaning process
+
+
+
+we weren't able to identify unique characteristics for each group
+
+### Deducing the groups an attacked user take part in using the techniques detailed in the paper:
+#### When the attacked user is always active in (at most) a single IM group:
+
+#### When the attacked user is may active in several IM groups simultaneously:
 
 ### References
 - The paper: https://www.ndss-symposium.org/wp-content/uploads/2020/02/24347-paper.pdf
