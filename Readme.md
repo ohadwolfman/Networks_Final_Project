@@ -3,7 +3,7 @@
 
 ### Introduction
 - In this project, we based on the paper "Practical Traffic Analysis Attacks on Secure Messaging Applications"
-- The paper claims that although instance message applications claim to be entirely secret, by simple statistics methods and filtering we can receive good information about the data that is transported.
+- The paper claims that although instant message applications claim to be entirely secret, by simple statistics methods and filtering we can receive good information about the data that is transported.
 - For each such group that is presented in the paper we plotted the inter-message delays and the message sizes, and we looked for unique characteristics for each group - messages, images, videos, files, and audio groups.
 - We considered 2 cases:
 	- The attacked user is always active in (at most) a single IM group.
