@@ -70,7 +70,7 @@ Presented below are the aforementioned figures. The graph depicting inter-messag
 <br clear="both" />
 > Images group graphs
 <p float="left">
-  <img src="res/LengthVsTime/edited/whatsappImagesCSVlengthVsTime.png" width="400" alt="Image group inter-message delays and the message sizes" />
+  <img src="res/LengthVsTime/whatsappImagesCSVlengthVsTime.png" width="400" alt="Image group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappImagesCSVpdfWithFittedExponential.png" width="400" alt="Images group PDF" />
 </p>
 
@@ -86,7 +86,7 @@ Presented below are the aforementioned figures. The graph depicting inter-messag
 <br clear="both" />
 > Videos group graphs
 <p float="left">
-  <img src="res/LengthVsTime/edited/whatsappVideosCSVlengthVsTime.png" width="400" alt="Videos group inter-message delays and the message sizes" />
+  <img src="res/LengthVsTime/whatsappVideosCSVlengthVsTime.png" width="400" alt="Videos group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappVideosCSVpdfWithFittedExponential.png" width="400" alt="Videos group PDF" />
 </p>
 
@@ -94,7 +94,7 @@ Presented below are the aforementioned figures. The graph depicting inter-messag
 <br clear="both" />
 > Files group graphs
 <p float="left">
-  <img src="res/LengthVsTime/edited/whatsappFilesCSVlengthVsTime.png" width="400" alt="Files group inter-message delays and the message sizes" />
+  <img src="res/LengthVsTime/whatsappFilesCSVlengthVsTime.png" width="400" alt="Files group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappFilesCSVpdfWithFittedExponential.png" width="400" alt="Files group PDF" />
 </p>
 
@@ -102,7 +102,7 @@ Presented below are the aforementioned figures. The graph depicting inter-messag
 <br clear="both" />
 > Mixed (Mostly messages) group graphs
 <p float="left">
-  <img src="res/LengthVsTime/edited/whatsappMessagesCSVlengthVsTime.png" width="400" alt="Messages group inter-message delays and the message sizes" />
+  <img src="res/LengthVsTime/whatsappMessagesCSVlengthVsTime.png" width="400" alt="Messages group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappMessagesCSVpdfWithFittedExponential.png" width="400" alt="Messages group PDF" />
 </p>
 
@@ -111,16 +111,87 @@ Beyond the groups previously discussed, we also captured data from a group where
 <br clear="both" />
 > Noisy before filtering (left), the rest is the same
 <p float="left">
-  <img src="res/LengthVsTime/edited/whatsappMessagesCSVlengthVsTime.png" width="400" alt="Noisy group inter-message delays and the message sizes" />
-  <img src="res/PDF/whatsappMessagesCSVpdfWithFittedExponential.png" width="400" alt="Noisy group PDF" />
+  <img src="res/LengthVsTime/whatsappNoisedGroupCSVlengthVsTime.png" width="400" alt="Noisy group inter-message delays and the message sizes" />
+  <img src="res/PDF/whatsappNoisedGroupCSVpdfWithFittedExponential.png" width="400" alt="Noisy group PDF" />
   
-  <img src="res/LengthVsTime/clean/WhatsappNoisedGroupDirtylengthVsTime.png" width="400" alt="Noisy group inter-message delays and the message sizes before filtering" />
+  <img src="res/LengthVsTime/WhatsappNoisedGroupDirtylengthVsTime.png" width="400" alt="Noisy group inter-message delays and the message sizes before filtering" />
 </p>
+
+
+Following our individual analysis of each group, we sought to identify unique characteristics inherent to each one. In the referenced article, the algorithm utilizes the distribution of message sizes to attribute an estimated size to a specific type of message, thereby synthesizing a particular channel. In that study, the Complementary Cumulative Distribution Function (CCDF) serves as a distinguishing feature for each group. A CCDF, for context, represents the probability that a random variable exceeds a particular value, typically offering a perspective inverse to the standard Cumulative Distribution Function (CDF) which illustrates the probability that a variable is less than or equal to a certain value.
+
+Contrary to the findings presented in the article, our CCDF did not manifest a distinctive characteristic for any of the groups. It appears that the distribution among the groups is largely analogous, even if the exact values differ; the trajectory of all groups follows a consistent direction.
+
+![CCDF](res/ChrachteristicsOfAllGroups/whatsappComunicationTypesCCDF.png)
+
+Following the inconclusiveness of the CCDF in differentiating the groups, alternative analytical approaches were explored to discern inherent characteristics within each group. Delving into basic statistics and the Mean Rolling Average Length, we unearthed salient insights:
+
+1. **Basic Statistics (Mean, Median, Variance):**
+
+	**Our Results:**
+
+		**Images**
+		Mean: 590.2623097582812
+		Median: 155.0
+		Variance: 357531.59180052264
+
+		------
+
+		**Audio**
+		Mean: 533.593487010611
+		Median: 150.0
+		Variance: 331351.81601905805
+
+		------
+
+		**Videos**
+		Mean: 832.1665263866678
+		Median: 1274.0
+		Variance: 331890.62691191706
+
+		------
+
+		**Files**
+		Mean: 838.881900560391
+		Median: 1274.0
+		Variance: 332855.6882516368
+
+		------
+		
+		**Mixed**
+		Mean: 638.8996929375639
+		Median: 166.0
+		Variance: 393327.1162149332
+
+		------
+
+    - **Mean:** This metric offers an average representation of message sizes across data points for each group. Comparative analysis elucidates fundamental disparities: the "Videos" and "Files" groups exhibit significantly elevated mean values relative to the "Images" and "Audio" groups, alluding to inherent differences in their content constitution.
+  
+    - **Median:** As a robust measure of central tendency, resilient to outlier perturbations, the median delineates distinct variations across groups. For instance, the pronounced median values for the "Videos" and "Files" groups underscore the divergence in typical message sizes across cohorts.
+  
+    - **Variance:** This metric elucidates the dispersion within the data. The pronounced variance observed in the "Mixed" group intimates a more expansive gamut of message sizes, concomitant with its diverse content spectrum.
+
+2. **Mean Rolling Average Length:**
+
+	**Our Results:**
+
+		**Images** Mean Rolling Average Length: 591.1035209688248
+		
+		**Audio** Mean Rolling Average Length: 534.3432085168849
+
+		**Videos** Mean Rolling Average Length: 832.4223003410125
+
+		**Files** Mean Rolling Average Length: 839.1627974947703
+
+		**Mixed** Mean Rolling Average Length: 640.3060574948666
+
+    - Yielding a smoothed continuum of message lengths over a predetermined window, this metric furnishes insights into overarching trends, eschewing transient data perturbations. The proximal values between the mean and the mean rolling average length for each cohort evince consistent data trajectories over the observational expanse. Such temporal consistency underscores the intrinsic data flow behavior endemic to each group.
+
+In summation, notwithstanding the limitations of the CCDF, the aforementioned metrics proffer a nuanced perspective. Disparities in the mean, median, variance, and the Mean Rolling Average Length serve as pivotal indicators in demarcating and classifying each group predicated on their content behavior and transmission modalities. This analytical paradigm elucidates the distinctive signatures inherent to each group, advancing the overarching research objective of discerning unique group characteristics.
 
 #### When the attacked user is may active in several IM groups simultaneously:
 
 
-we weren't able to identify unique characteristics for each group. we tried different approaches:
 
 
 ### References
