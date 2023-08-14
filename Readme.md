@@ -1,23 +1,52 @@
 # Networks - Final Project
 ## Instance messages reference transportation analysis
 
-### Introduction
-- In this project, we based on the paper "Practical Traffic Analysis Attacks on Secure Messaging Applications"
+## Table of content:
+1. [ Introduction. ](#Introduction)
+2. [ Running instructions. ](#Running)
+3. [ Directories and files. ](#Directories)
+4. [ Dataset details and additional information. ](#Dataset)
+5. [ The cleaning process. ](#cleaning)
+6. [ Deducing the groups. ](#Deducing)
+7. [ Insights. ](#Insights)
+8. [ References. ](#References)
+9. [ Authors. ](#Authors)
+
+
+
+<a name="Introduction"></a>
+### 1. Introduction
+- In this project, we based on the paper ["Practical Traffic Analysis Attacks on Secure Messaging Applications"](https://www.ndss-symposium.org/wp-content/uploads/2020/02/24347-paper.pdf)
 - The paper claims that although instant message applications claim to be entirely secret, by simple statistics methods and filtering we can receive good information about the data that is transported.
 - For each such group that is presented in the paper we plotted the inter-message delays and the message sizes, and we looked for unique characteristics for each group - messages, images, videos, files, and audio groups.
 - We considered 2 cases:
 	- The attacked user is always active in (at most) a single IM group.
 	- The attacked user may be active in several IM groups simultaneously.
 
+<a name="Running"></a>
+### 2. Running instructions
+- Clone the repo
+- Open the repo through Jupyter
+- Run the clean notebook on one of the groups of your choice - it will create an updated cleaned CSV file in the ['CLEAN'](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/resources/CLEAN) directory
+- Run the analyzing notebook on one of the groups of your choice
+- If you want to analyze your IM recording CSV:
+	- Add the CSV to the directory: [resources->RAW->CSV](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/resources/RAW/CSV)
+   	- Find the function load_csv in both of the notebooks
+   	- Add an additional 'elif' with a new number and save the CSV name in the variable 'file_name'
+   	- Find the Main run function in both of the notebooks  
+   	- Add an additional option instead of the 'Exit' option
+   	- Run the programmer following the previous instructions
 
-### Directories and files
-- src directory, which includes all your code.
-- resources directory: includes some sample raw data for the work (traces / pcap files etc.).
-- res directory: includes the results (text files / Python pickle files).
+<a name="Directories"></a>
+### 3. Directories and files
+- [src](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/src) directory, which includes all your code.
+- [resources](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/resources): includes some sample raw data for the work (traces / pcap files etc.).
+- [res](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/res): includes the results (text files / Python pickle files).
 
-### Dataset details and additional information
-- We exported every Wireshark record to a csv files for the analyzing.
-- Every csv file contains the following columns:
+<a name="Dataset"></a>
+### 4. Dataset details and additional information
+- We exported every Wireshark record to a CSV file for the analyzing.
+- Every CSV file contains the following columns:
     - No. - the packet number 
     - Time - the timestamp of when the packet or message was captured in milliseconds
     - Source - the source IP address
@@ -38,7 +67,8 @@
     - It allows the client and server to verify each other's identities using digital certificates, preventing man-in-the-middle attacks
 - Each SIM event, e.g., a sent image, produces a burst of MTU-sized packets in the encrypted traffic with very small inter-packet delays.
 
-### The cleaning process:
+<a name="cleaning"></a>
+### 5. The cleaning process:
 Initially, our approach involved filtering based on a singular protocol that appeared recurrently within the dataset. However, it became evident that this method inadvertently excluded a substantial amount of communication data. As a remedy, rather than focusing on a single protocol, we chose to filter out non-relevant protocols that were conclusively not transmitting WhatsApp communication data, such as DNS and NTP, among others.
 
 Subsequently, in an effort to further refine the dataset and eliminate noise, we evaluated the IPs from which messages were being sent. It was observed that certain messages were routed through servers not affiliated with Facebook, the parent company of WhatsApp. These unrelated servers were then filtered based on their geographical location, specifically whether they were located within Israel. Generally speaking, the majority of WhatsApp communication is relayed via Facebook's servers. If the communication isn't directed straight to WhatsApp, it's likely due to the substantial size of the transmitted data, which is then routed through a local server, typically residing in Israel as an ISP.
@@ -49,8 +79,8 @@ To address potential anomalies or aberrations in packet sizes, we posited that i
 
 Lastly, the filtering was further refined by examining the content detailed in the 'info' description of each packet. All packets labeled 'Len=0' were excluded since this value denotes the size of the transferred data excluding headers, leading us to deduce that these packets essentially transmitted no data. Finally, we surveyed the varying types of 'info' and, based on their descriptions and average packet sizes, made determinations on which to omit. For instance, packets described as 'Initial', which denotes the inception of a connection, or 'Client Hello', which is also devoid of pertinent data, were among those excluded.
 
-
-### Deducing the groups an attacked user take part in using the techniques detailed in the paper:
+<a name="Deducing"></a>
+### 6. Deducing the groups an attacked user take part in using the techniques detailed in the paper:
 #### When the attacked user is always active in (at most) a single IM group:
 We initiated our study by capturing the traffic from five distinct WhatsApp groups, each emphasizing a unique central theme. One group primarily focused on images, the second on audio, the third on videos, the fourth on file transfers, and the last presented a mixture of all types, with a particular emphasis on text messages. As inferred from the context of this section, we postulated that a participant is active in, at most, one group at any given time.
 Following the recordings of each of the groups, we subjected them to a filtering process, as detailed above.
@@ -61,7 +91,7 @@ By analyzing these graphical representations, we can derive several key observat
 
 Moreover, the probability density functions (PDFs) for each distinct group classification offer a comprehensive overview of the statistical distribution of the data. These functions can help identify outliers or predominant modes in the data, further contributing to our understanding of the traffic dynamics.
 
-During the data acquisition process, we meticulously logged the timestamps of transmitted items, subsequently incorporating this data into the analyses of inter-message delays and message sizes. An examination of the results reveals that while our filtering mechanism is not infallible, leading to the presence of some noise in the recordings, the overall outcome is commendable, as evidenced by the high correlation observed (It is possible to detect wether the user is active in the group).
+During the data acquisition process, we meticulously logged the timestamps of transmitted items, subsequently incorporating this data into the analyses of inter-message delays and message sizes. An examination of the results reveals that while our filtering mechanism is not infallible, leading to the presence of some noise in the recordings, the overall outcome is commendable, as evidenced by the high correlation observed (It is possible to detect whether the user is active in the group).
 
 Presented below are the aforementioned figures. The graph depicting inter-message delays and message sizes is distinguished by two colors. One color represents the items sent by the user whose communication we monitored (with an internal IP of 10.0.2.15), while all other incoming traffic is denoted by a different color.
 
@@ -122,6 +152,8 @@ Contrary to the findings presented in the article, our CCDF did not manifest a d
 
 ![CCDF](res/ChrachteristicsOfAllGroups/whatsappComunicationTypesCCDF.png)
 
+<a name="Insights"></a>
+### 7. Insights
 Following the inconclusiveness of the CCDF in differentiating the groups, alternative analytical approaches were explored to discern inherent characteristics within each group. Delving into basic statistics and the Mean Rolling Average Length, we unearthed salient insights:
 
 1. **Basic Statistics (Mean, Median, Variance):**
@@ -203,12 +235,13 @@ Subsequently, we hypothesized that focusing solely on the data dispatched by the
 
 In summary, our findings suggest that it is indeed feasible to discern an unidentified member's specific group association, even in the presence of simultaneous activities across multiple groups.
 
-
-### References
+<a name="References"></a>
+### 8. References
 - The paper: https://www.ndss-symposium.org/wp-content/uploads/2020/02/24347-paper.pdf
 - The researchers GitHub repo: https://github.com/SPIN-UMass/IMProxy
 
-### Authors
+<a name="Authors"></a>
+### 9. Authors
 - Wolfman Ohad, https://www.linkedin.com/in/ohad-wolfman/
 - Chesler Shira, https://www.linkedin.com/in/shira-chesler-4438b5222/
 
