@@ -57,20 +57,18 @@ Following the recordings of each of the groups, we subjected them to a filtering
 
 In alignment with the paper, we constructed visual representations elucidating both the inter-message delays and the dimensions of individual messages. Furthermore, we generated probability density functions (PDFs) for each distinct group classification. These graphical analyses provide substantive insights into the underlying traffic patterns and behaviors.
 
-By analyzing these graphical representations, we can derive several key observations. Firstly, the inter-message delays offer an understanding of the temporal distribution and pacing of messages within the network, potentially revealing periods of high or low activity. Such insights can be crucial for identifying regular transmission intervals or bursts of communication which may correspond to specific operational patterns or anomalies.
-
-Secondly, by assessing the dimensions of individual messages, we gain insight into the volume and type of data being transmitted. Larger message sizes might indicate transmission of multimedia files or bulk data transfers, whereas smaller messages could be associated with control signals or textual communications.
+By analyzing these graphical representations, we can derive several key observations. By assessing the dimensions of individual messages, we gain insight into the volume and type of data being transmitted. Larger message sizes might indicate transmission of multimedia files or bulk data transfers, whereas smaller messages could be associated with control signals or textual communications.
 
 Moreover, the probability density functions (PDFs) for each distinct group classification offer a comprehensive overview of the statistical distribution of the data. These functions can help identify outliers or predominant modes in the data, further contributing to our understanding of the traffic dynamics.
 
-During the data acquisition process, we meticulously logged the timestamps of transmitted items, subsequently incorporating this data into the analyses of inter-message delays and message sizes. An examination of the results reveals that while our filtering mechanism is not infallible, leading to the presence of some noise in the recordings, the overall outcome is commendable, as evidenced by the high correlation observed.
+During the data acquisition process, we meticulously logged the timestamps of transmitted items, subsequently incorporating this data into the analyses of inter-message delays and message sizes. An examination of the results reveals that while our filtering mechanism is not infallible, leading to the presence of some noise in the recordings, the overall outcome is commendable, as evidenced by the high correlation observed (It is possible to detect wether the user is active in the group).
 
 Presented below are the aforementioned figures. The graph depicting inter-message delays and message sizes is distinguished by two colors. One color represents the items sent by the user whose communication we monitored (with an internal IP of 10.0.2.15), while all other incoming traffic is denoted by a different color.
 
 <br clear="both" />
 > Images group graphs
 <p float="left">
-  <img src="res/LengthVsTime/whatsappImagesCSVlengthVsTime.png" width="400" alt="Image group inter-message delays and the message sizes" />
+  <img src="res/LengthVsTime/edited/whatsappImagesCSVlengthVsTime.png" width="400" alt="Image group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappImagesCSVpdfWithFittedExponential.png" width="400" alt="Images group PDF" />
 </p>
 
@@ -86,7 +84,7 @@ Presented below are the aforementioned figures. The graph depicting inter-messag
 <br clear="both" />
 > Videos group graphs
 <p float="left">
-  <img src="res/LengthVsTime/whatsappVideosCSVlengthVsTime.png" width="400" alt="Videos group inter-message delays and the message sizes" />
+  <img src="res/LengthVsTime/edited/whatsappVideosCSVlengthVsTime.png" width="400" alt="Videos group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappVideosCSVpdfWithFittedExponential.png" width="400" alt="Videos group PDF" />
 </p>
 
@@ -94,7 +92,7 @@ Presented below are the aforementioned figures. The graph depicting inter-messag
 <br clear="both" />
 > Files group graphs
 <p float="left">
-  <img src="res/LengthVsTime/whatsappFilesCSVlengthVsTime.png" width="400" alt="Files group inter-message delays and the message sizes" />
+  <img src="res/LengthVsTime/edited/whatsappFilesCSVlengthVsTime.png" width="400" alt="Files group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappFilesCSVpdfWithFittedExponential.png" width="400" alt="Files group PDF" />
 </p>
 
@@ -102,7 +100,7 @@ Presented below are the aforementioned figures. The graph depicting inter-messag
 <br clear="both" />
 > Mixed (Mostly messages) group graphs
 <p float="left">
-  <img src="res/LengthVsTime/whatsappMessagesCSVlengthVsTime.png" width="400" alt="Messages group inter-message delays and the message sizes" />
+  <img src="res/LengthVsTime/edited/whatsappMessagesCSVlengthVsTime.png" width="400" alt="Messages group inter-message delays and the message sizes" />
   <img src="res/PDF/whatsappMessagesCSVpdfWithFittedExponential.png" width="400" alt="Messages group PDF" />
 </p>
 
@@ -111,10 +109,10 @@ Beyond the groups previously discussed, we also captured data from a group where
 <br clear="both" />
 > Noisy before filtering (left), the rest is the same
 <p float="left">
-  <img src="res/LengthVsTime/whatsappNoisedGroupCSVlengthVsTime.png" width="400" alt="Noisy group inter-message delays and the message sizes" />
-  <img src="res/PDF/whatsappNoisedGroupCSVpdfWithFittedExponential.png" width="400" alt="Noisy group PDF" />
+  <img src="res/LengthVsTime/edited/WhatsappNoisedGroupCSVlengthVsTime.png" width="400" alt="Noisy group inter-message delays and the message sizes" />
+  <img src="res/PDF/WhatsappNoisedGroupCSVpdfWithFittedExponential.png" width="400" alt="Noisy group PDF" />
   
-  <img src="res/LengthVsTime/WhatsappNoisedGroupDirtylengthVsTime.png" width="400" alt="Noisy group inter-message delays and the message sizes before filtering" />
+  <img src="res/LengthVsTime/clean/WhatsappNoisedGroupDirtylengthVsTime.png" width="400" alt="Noisy group inter-message delays and the message sizes before filtering" />
 </p>
 
 
@@ -130,35 +128,35 @@ Following the inconclusiveness of the CCDF in differentiating the groups, altern
 
 	**Our Results:**
 
-		**Images**
+		Images
 		Mean: 590.2623097582812
 		Median: 155.0
 		Variance: 357531.59180052264
 
 		------
 
-		**Audio**
+		Audio
 		Mean: 533.593487010611
 		Median: 150.0
 		Variance: 331351.81601905805
 
 		------
 
-		**Videos**
+		Videos
 		Mean: 832.1665263866678
 		Median: 1274.0
 		Variance: 331890.62691191706
 
 		------
 
-		**Files**
+		Files
 		Mean: 838.881900560391
 		Median: 1274.0
 		Variance: 332855.6882516368
 
 		------
 		
-		**Mixed**
+		Mixed
 		Mean: 638.8996929375639
 		Median: 166.0
 		Variance: 393327.1162149332
@@ -175,15 +173,15 @@ Following the inconclusiveness of the CCDF in differentiating the groups, altern
 
 	**Our Results:**
 
-		**Images** Mean Rolling Average Length: 591.1035209688248
+		Images Mean Rolling Average Length: 591.1035209688248
 		
-		**Audio** Mean Rolling Average Length: 534.3432085168849
+		Audio Mean Rolling Average Length: 534.3432085168849
 
-		**Videos** Mean Rolling Average Length: 832.4223003410125
+		Videos Mean Rolling Average Length: 832.4223003410125
 
-		**Files** Mean Rolling Average Length: 839.1627974947703
+		Files Mean Rolling Average Length: 839.1627974947703
 
-		**Mixed** Mean Rolling Average Length: 640.3060574948666
+		Mixed Mean Rolling Average Length: 640.3060574948666
 
     - Yielding a smoothed continuum of message lengths over a predetermined window, this metric furnishes insights into overarching trends, eschewing transient data perturbations. The proximal values between the mean and the mean rolling average length for each cohort evince consistent data trajectories over the observational expanse. Such temporal consistency underscores the intrinsic data flow behavior endemic to each group.
 
@@ -191,7 +189,19 @@ In summation, notwithstanding the limitations of the CCDF, the aforementioned me
 
 #### When the attacked user is may active in several IM groups simultaneously:
 
+In conclusion, our overarching aim was to ascertain whether, given the known traffic of a specific group member and the traffic of an unidentified member, we could accurately determine the latter's group affiliation. Initially, we recognized that due to the unidentified member's concurrent participation in multiple groups, it was imperative to eliminate traffic conspicuously unaffiliated with the mutual group. This determination was made based on the deviation between the maximum traffic values within a specified second exceeding a certain threshold.
 
+Subsequent to this filtration process (which, it should be noted, was similarly applied to the previously discussed groups), we sought to juxtapose the outbound traffic from the known member against the inbound traffic to the unidentified member, and vice versa, including the traffic incoming to both. Our anticipation was that numerous overlapping traffic instances would be evident, considering their mutual group membership. However, our empirical observations did not corroborate this expectation.
+
+Upon further scrutiny of the data, we discerned that even after isolating traffic specific to the group, the magnitude of the data at the unidentified member's disposal, whether outbound or inbound, was considerably more voluminous. Consequently, our subsequent hypothesis entailed the normalization of the data volume directed to both members in an attempt to identify any semblance of similarity. To effectuate this normalization, we employed Cumulative Distribution Function (CDF) graphs for both entities and evaluated the congruence between the graphs. While certain congruencies were observed at specific "steps", these were not extensive.
+
+![Initial CDFs](res/ActiveMultipleGroupsCDFs/intialCDFs.png)
+
+Subsequently, we hypothesized that focusing solely on the data dispatched by the known member and received by the unidentified member might provide a clearer picture. Indeed, the resultant CDF graphs bore significant resemblance, with both depicting analogous jumps. To further substantiate this observation, we computed the Pearson correlation between these two graphs, yielding a significant correlation coefficient of 92.7%.
+
+![Improved CDFs](res/ActiveMultipleGroupsCDFs/improvedCDFs.png)
+
+In summary, our findings suggest that it is indeed feasible to discern an unidentified member's specific group association, even in the presence of simultaneous activities across multiple groups.
 
 
 ### References
