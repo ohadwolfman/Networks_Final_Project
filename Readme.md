@@ -17,11 +17,12 @@
 <a name="Introduction"></a>
 ### 1. Introduction
 - In this project, we based on the paper ["Practical Traffic Analysis Attacks on Secure Messaging Applications"](https://www.ndss-symposium.org/wp-content/uploads/2020/02/24347-paper.pdf)
-- The paper claims that although instant message applications claim to be entirely secret, by simple statistics methods and filtering we can receive good information about the data that is transported.
+- The paper claims that although instant message applications claim to be entirely secret, by simple statistics methods and filtering we can receive good information one's affiliation with various WhatsApp group.
 - For each such group that is presented in the paper we plotted the inter-message delays and the message sizes, and we looked for unique characteristics for each group - messages, images, videos, files, and audio groups.
-- We considered 2 cases:
+- In order to deduce the groups one may take part in, we considered 2 cases:
 	- The attacked user is always active in (at most) a single IM group.
 	- The attacked user may be active in several IM groups simultaneously.
+- In the following sections, we elucidate our conceptual and computational methodologies. This is further exemplified in the Jupyter notebooks associated with this project.
 
 <a name="Running"></a>
 ### 2. Running instructions
@@ -39,9 +40,29 @@
 
 <a name="Directories"></a>
 ### 3. Directories and files
-- [src](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/src) directory, which includes all your code.
-- [resources](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/resources): includes some sample raw data for the work (traces / pcap files etc.).
-- [res](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/res): includes the results (text files / Python pickle files).
+- **[res](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/res) Directory: Results Graphs**
+  - **ActiveMultipleGroupsCDFs:** Contains the Cumulative Distribution Functions (CDFs) of the communication when the attack was active across multiple groups simultaneously.
+  - **CharacteristicsOfAllGroups:** Presents the Complementary Cumulative Distribution Functions (CCDFs) for each recorded group.
+  - **LengthVsTime:** 
+    - **clean:** Features graphs that depict the length of the packets transmitted over time, directly produced from the code.
+    - **edited:** Contains modified versions of the graphs in the 'clean' sub-folder. Annotations indicating the original message transmission times have been added.
+  - **PDF:** Incorporates the Probability Density Functions (PDFs) of each of the recorded groups.
+
+- **[resources](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/resources) Directory**
+  - **CLEAN:** Contains CSV files that have undergone a cleaning process.
+  - **RAW:** 
+    - **PCAP:** Stores the pcap files representing the recorded communication.
+    - **CSV:** Features the same communication records as in the 'PCAP' folder but exported in CSV format.
+
+- **[src](https://github.com/ohadwolfman/Networks_Final_Project/tree/master/src) Directory: Source Code**
+  - **Cleaning Process Notebook**
+  - **Data Analysis Notebook**
+
+**Other Project Files**
+- **DRY part:** Specifies the requirements for the theoretical part of the project.
+- **Final project.PDF:** Offers comprehensive instructions for the project.
+- **hebrew-dryPart.docx** and **hebrew-dryPart.PDF:** Provide our responses to the theoretical part of the project. These documents summarize the article upon which our project is based, written in Hebrew.
+- **README.md** and **README.PDF:** Furnish the detailed project description and navigation guide.
 
 <a name="Dataset"></a>
 ### 4. Dataset details and additional information
@@ -54,6 +75,7 @@
     - Protocol - the network protocol used for the communication
     - Length - the length of the packet in bytes including the headers and the data payload
     - Info:
+	(An example to what an info can look like, with explanations:)
         - 443 > 35260: This part indicates the source and destination ports of the TCP communication. "443" is the source port, and "35260" is the destination port.
         - [flags]: These are TCP flags set in the packet.
          for example [PSH, ACK] that represents "Push" for telling the receiving side to deliver the data to the application immediately, rather than buffering it.
@@ -152,8 +174,6 @@ Contrary to the findings presented in the article, our CCDF did not manifest a d
 
 ![CCDF](res/ChrachteristicsOfAllGroups/whatsappComunicationTypesCCDF.png)
 
-<a name="Insights"></a>
-### 7. Insights
 Following the inconclusiveness of the CCDF in differentiating the groups, alternative analytical approaches were explored to discern inherent characteristics within each group. Delving into basic statistics and the Mean Rolling Average Length, we unearthed salient insights:
 
 1. **Basic Statistics (Mean, Median, Variance):**
@@ -234,6 +254,10 @@ Subsequently, we hypothesized that focusing solely on the data dispatched by the
 ![Improved CDFs](res/ActiveMultipleGroupsCDFs/improvedCDFs.png)
 
 In summary, our findings suggest that it is indeed feasible to discern an unidentified member's specific group association, even in the presence of simultaneous activities across multiple groups.
+
+<a name="Insights"></a>
+### 7. Insights
+Our project undertook a meticulous exploration into the realm of secure messaging, specifically focusing on WhatsApp group affiliations and the ostensible secrecy they maintain. Building on the foundational study presented in "Practical Traffic Analysis Attacks on Secure Messaging Applications", our investigation confirms that even with sophisticated encryption, rudimentary statistical methodologies can reveal profound insights into a user's group affiliations. Through an extensive analysis encompassing inter-message delays, message sizes, and probability density functions for distinct groups, we discerned salient traffic patterns indicative of the nature of content being communicated. Furthermore, our endeavors to decipher the group affiliations of an unidentified user, even amid concurrent activities across multiple groups, yielded promising results. A particularly pivotal revelation was the significant Pearson correlation coefficient of 92.7% upon refining our comparative approach, suggesting the viability of accurately determining group affiliations based on traffic patterns. This research not only challenges prevailing notions of secure messaging but also emphasizes the paramount importance of continuous, in-depth analyses in the ever-evolving domain of digital communication.
 
 <a name="References"></a>
 ### 8. References
