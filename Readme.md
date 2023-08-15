@@ -107,7 +107,7 @@ Presented below are the aforementioned figures. The graph depicting inter-messag
 Beyond the groups previously discussed, we also captured data from a group where constant background noise was present, attributed to the continuous operation of Spotify. This dataset too underwent the same rigorous filtering process as its counterparts. After extracting the graph representing this 'background-noise group' and subjecting it to our filtering technique, an immediate observation points to the significant noise within. Yet, once filtered, the resultant graph not only showcased a marked diminution in disruptions, thereby enhancing data clarity, but also facilitated a clear demarcation and recognition of the actual underlying traffic trends and events.
 
 <br clear="both" />
-> Noisy before filtering (left), the rest is the same
+> Noisy before filtering (the bottom picture), the rest is the same
 <p float="left">
   <img src="res/LengthVsTime/edited/WhatsappNoisedGroupCSVlengthVsTime.png" width="400" alt="Noisy group inter-message delays and the message sizes" />
   <img src="res/PDF/WhatsappNoisedGroupCSVpdfWithFittedExponential.png" width="400" alt="Noisy group PDF" />
